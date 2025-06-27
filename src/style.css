@@ -1,0 +1,113 @@
+@import "@arcgis/core/assets/esri/themes/light/main.css";
+@import "@arcgis/map-components/arcgis-map-components/arcgis-map-components.css";
+@import "@esri/calcite-components/calcite/calcite.css";
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#mapEl {
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+calcite-loader {
+  align-self: center;
+  justify-self: center;
+}
+
+#info-content {
+  padding: 0.75rem;
+}
+
+.calcite-button {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.esri-feature {
+  letter-spacing: 0em;
+    line-height: 1.55rem;
+    font-feature-settings:
+      "liga" 1,
+      "calt" 0;
+    background: #fff;
+    padding: 1em;
+}
+
+.field-select-wrapper {
+  padding: 1em 1.5em 1.5em 1.5em;
+}
+
+.field-select-wrapper calcite-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.field-select-wrapper calcite-select {
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+#alaskaViewDiv {
+  position: absolute;
+  padding: 2px;
+  margin: 10px;
+  height: 225px;
+  width: 300px;
+  bottom: 20px;
+  left: 50px;
+  max-width: calc(100vw - 60px);
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
+
+#hawaiiViewDiv {
+  position: absolute;
+  padding: 2px;
+  margin: 10px;
+  height: 135px;
+  width: 200px;
+  bottom: 20px;
+  left: 375px;
+  max-width: calc(100vw - 385px);
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
+
+@media (max-width: 900px) {
+  #alaskaViewDiv {
+    width: 180px;
+    height: 120px;
+    left: 20px;
+    max-width: calc(100vw - 30px);
+    bottom: 20px;
+  }
+  #hawaiiViewDiv {
+    width: 120px;
+    height: 80px;
+    left: 210px;
+    max-width: calc(100vw - 220px);
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  #alaskaViewDiv,
+  #hawaiiViewDiv {
+    position: static;
+    width: 100%;
+    margin: 0 0 10px 0;
+    display: block;
+    max-width: 100vw;
+  }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="globe-16.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Economic Mobility and Migration App</title>
+</head>
+
+<body>
+  <calcite-shell content-behind>
+    <calcite-navigation slot="header">
+      <calcite-navigation-logo slot="logo" icon="map" heading="Migration Flow"
+        description="Economic Mobility & Young Adult Migration Patterns"></calcite-navigation-logo>
+    </calcite-navigation>
+    <calcite-shell-panel slot="panel-start" display-mode="float-content">
+      <calcite-action-bar slot="action-bar">
+        <calcite-action data-action-id="layers" icon="layers" text="Layers"></calcite-action>
+        <calcite-action data-action-id="slider" icon="filter" text="Slider"></calcite-action>
+        <calcite-action data-action-id="fields" icon="palette" text="Field Selector"></calcite-action>
+        <calcite-action data-action-id="legend" icon="legend" text="Legend"></calcite-action>
+        <calcite-action data-action-id="bookmarks" icon="bookmark" text="Bookmarks"></calcite-action>
+        <calcite-action data-action-id="basemaps" icon="basemap" text="Basemaps"></calcite-action>
+        <calcite-action data-action-id="information" icon="information" text="Information" id="info-action"></calcite-action>
+      </calcite-action-bar>
+      <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+      <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" closed closable>
+        <arcgis-layer-list reference-element="mapEl" visibility-appearance="default"></arcgis-layer-list>
+      </calcite-panel>
+      <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" closed closable>
+        <arcgis-basemap-gallery reference-element="mapEl"></arcgis-basemap-gallery>
+      </calcite-panel>
+      <calcite-panel heading="Legend" height-scale="l" data-panel-id="legend" closed closable>
+        <arcgis-legend legend-style="classic" reference-element="mapEl"></arcgis-legend>
+      </calcite-panel>
+      <calcite-panel heading="Bookmarks" height-scale="l" data-panel-id="bookmarks" closed closable>
+        <arcgis-bookmarks editing-enabled="false" reference-element="mapEl"></arcgis-bookmarks>
+      </calcite-panel>
+      <calcite-panel heading="Migration Flow Filter" data-panel-id="slider" closed closable>
+        <calcite-block open heading="Filter Flows" description="Drag slider to filter migration flowlines">
+          <label>
+            <calcite-slider id="slider-left" min="0" max="10000" step="1000" ticks="1000" value="500" label-handles></calcite-slider>
+          </label>
+          <div style="margin-top: 1em;">
+            <calcite-button id="draw-lines-btn" icon-start="pencil">Draw Lines</calcite-button>
+            <calcite-button id="clear-lines-btn" appearance="outline" icon-start="erase">Clear Lines</calcite-button>
+          </div>
+        </calcite-block>
+      </calcite-panel>
+      <!-- Add this after your other calcite-panel elements -->
+      <calcite-panel heading="Select Field" data-panel-id="fields" closed closable>
+        <div class="field-select-wrapper">
+          <calcite-label>
+            Symbolize Map by Attribute:
+            <calcite-select id="field-select"></calcite-select>
+          </calcite-label>
+        </div>
+      </calcite-panel>
+    </calcite-shell-panel>
+    <arcgis-map id="mapEl" item-id="d52ce04468db46eab3e70890696c9ec9" zoom="4">
+      <arcgis-zoom reference-element="mapEl"></arcgis-zoom>
+      <arcgis-home reference-element="mapEl" position="top-leading"></arcgis-home>
+    </arcgis-map>
+    <div id="alaskaViewDiv"></div>
+    <div id="hawaiiViewDiv"></div>
+    <calcite-shell-panel slot="panel-end" display-mode="float-content">
+     <calcite-panel id="feature-info-panel" heading="Additional Information" closed closable>
+    <arcgis-feature id="feature-info" reference-element="#mapEl" content hide-action-bar initial-display-mode="feature"></arcgis-feature>
+    </calcite-panel> 
+    </calcite-shell-panel>
+    <calcite-dialog id="about-dialog" kind="info" width="m">
+      <div slot="header">About This App</div>
+      <div>
+        <p>
+          <b>Economic Mobility and Young Adult Migration App</b><br>
+          This application visualizes migration flows between commuting zones, allowing you to explore neighborhood characteristics and migration patterns interactively.<br><br>
+          Use the tools on the left to filter, explore, and analyze young adult migration patterns across the United States.
+        </p>
+      </div>
+      <calcite-button slot="footer-end" id="about-dialog-close">Close</calcite-button>  
+    </calcite-dialog>
+  </calcite-shell>
+  <calcite-loader label="loading" text="Loading..."></calcite-loader>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
