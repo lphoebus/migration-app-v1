@@ -1,1 +1,0 @@
-import"./index-ycM7R5Uo.js";import"./customElement-D0Gt-Eb3.js";import{Table as b}from"./customElement-B5-9bU8B.js";import"./keyed-DROWTBQi.js";import"./locale-BK6YlMXi.js";import"./responsive-D7DWzL6I.js";import"./global-DteFDqGz.js";export{b as Table};
